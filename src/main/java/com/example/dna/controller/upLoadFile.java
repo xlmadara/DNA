@@ -25,7 +25,7 @@ import javax.servlet.http.HttpServletRequest;
  **/
 
 @Controller
-public class test {
+public class upLoadFile {
     @RequestMapping("/index.html")
     public String f1(){
         return "index";
@@ -37,12 +37,8 @@ public class test {
     }
 
     @RequestMapping("/upload")
-    @ResponseBody
-    public Map<String,Object> f3(HttpServletRequest request){
+    public String f3(HttpServletRequest request){
         boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-
-        Map<String,Object> res ;
-        res = new HashMap<>() ;
 
         if(isMultipart){
 
@@ -85,9 +81,7 @@ public class test {
                         bstream.writeTo(fileout);
 
                     } catch (IOException e) {
-                        res.clear();
-                        res.put("result","file upload failed");
-                        return res;
+                        e.printStackTrace();
 
                     }finally{
 
@@ -124,15 +118,12 @@ public class test {
                 }
 
             } catch (Exception e) {
-                res.clear();
-                res.put("result","file upload failed");
-                return res;
+                e.printStackTrace();
             }
 
         }
-        res.put("name","file upload success");
-        res.put("size","100");
-        return res;
+
+        return "form_fileupload.html";
     }
 
 }

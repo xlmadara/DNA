@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartAutoConfiguration;
 
-@SpringBootApplication(exclude = {MybatisAutoConfiguration.class, DataSourceAutoConfiguration.class,MultipartAutoConfiguration.class})
+@SpringBootApplication(exclude = {MultipartAutoConfiguration.class})
 public class DnaApplication {
 
     public static void main(String[] args) {
